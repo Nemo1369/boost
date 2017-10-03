@@ -25,7 +25,12 @@ target_link_libraries(boost_context PUBLIC boost::smart_ptr)
 target_link_libraries(boost_context PUBLIC boost::config)
 target_link_libraries(boost_context PUBLIC boost::pool)
 
-enable_language(ASM)
+if (MSVC)
+  enable_language(ASM_MASM)
+else ()
+  enable_language(ASM)
+endif()
+
 set(abi
   aapcs
   eabi
@@ -109,15 +114,19 @@ set_property(CACHE BOOST_CONTEXT_ARCHITECTURE
   PROPERTY STRINGS "${arch}"
   )
 
-if(MSVC AND (${CMAKE_CXX_COMPILER_ID} MATCHES "Clang"))
-set(asm_format "gas.asm")
-elseif(MSVC)
+if(MSVC)
 set(asm_format "masm.asm")
 else()
 set(asm_format "gas.S")
 endif()
 
 target_compile_definitions(boost_context PRIVATE BOOST_CONTEXT_SOURCE)
+if (CMAKE_BUILD_SHARED) 
+  target_compile_definitions(boost_context PRIVATE BOOST_CONTEXT_EXPORT=EXPORT)
+else()
+target_compile_definitions(boost_context PRIVATE BOOST_CONTEXT_EXPORT)
+endif()
+
 
 target_sources(boost_context PRIVATE 
   src/asm/make_${BOOST_CONTEXT_ARCHITECTURE}_${BOOST_CONTEXT_ABI}_${BOOST_CONTEXT_BINARY_FORMAT}_${asm_format}
