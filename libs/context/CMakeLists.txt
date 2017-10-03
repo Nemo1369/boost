@@ -109,7 +109,9 @@ set_property(CACHE BOOST_CONTEXT_ARCHITECTURE
   PROPERTY STRINGS "${arch}"
   )
 
-if(MSVC)
+if(MSVC AND (${CMAKE_CXX_COMPILER_ID} MATCHES "Clang"))
+set(asm_format "gas.asm")
+elseif(MSVC)
 set(asm_format "masm.asm")
 else()
 set(asm_format "gas.S")
