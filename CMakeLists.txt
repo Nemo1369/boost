@@ -2,6 +2,8 @@
 cmake_minimum_required(VERSION 3.5)
 project(boost)
 
+cmake_policy(SET CMP0037 OLD)
+
 macro(find_package NAME)
     if(NOT "${NAME}" MATCHES "^boost_.*$" AND NOT "${NAME}" STREQUAL BCM)
         _find_package(${ARGV})
