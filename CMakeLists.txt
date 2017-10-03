@@ -21,11 +21,6 @@ if(NOT PythonLibs_FOUND)
     list(APPEND EXCLUDE_LIBS python)
 endif()
 
-find_package(PythonLibs)
-if(NOT PythonLibs_FOUND)
-    list(APPEND EXCLUDE_LIBS python)
-endif()
-
 find_package(MPI)
 if(NOT MPI_FOUND)
     list(APPEND EXCLUDE_LIBS mpi)
