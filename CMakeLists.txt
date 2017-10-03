@@ -4,6 +4,7 @@ project(boost)
 
 cmake_policy(SET CMP0037 OLD)
 
+option(BUILD_TESTING "Build the test suite" OFF)
 macro(find_package NAME)
     if(NOT "${NAME}" MATCHES "^boost_.*$" AND NOT "${NAME}" STREQUAL BCM)
         _find_package(${ARGV})
