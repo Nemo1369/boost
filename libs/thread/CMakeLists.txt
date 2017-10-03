@@ -76,6 +76,12 @@ target_link_libraries(boost_thread PUBLIC boost::throw_exception)
 find_package(Threads)
 target_link_libraries(boost_thread PUBLIC Threads::Threads)
 
+if (BUILD_SHARED_LIBS)
+    target_compile_definitions(boost_thread PRIVATE BOOST_THREAD_BUILD_DLL)
+else()
+    target_compile_definitions(boost_thread PRIVATE BOOST_THREAD_BUILD_LIB)
+endif()
+
 if(WIN32)
 target_sources(boost_thread PRIVATE
     src/win32/thread.cpp
