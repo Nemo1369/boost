@@ -2,6 +2,9 @@
 cmake_minimum_required(VERSION 3.5)
 project(boost)
 
+cmake_policy(SET CMP0037 OLD)
+
+option(BUILD_TESTING "Build the test suite" OFF)
 macro(find_package NAME)
     if(NOT "${NAME}" MATCHES "^boost_.*$" AND NOT "${NAME}" STREQUAL BCM)
         _find_package(${ARGV})
@@ -13,11 +16,6 @@ endmacro()
 include(bcm/share/bcm/cmake/BCMConfig.cmake)
 
 set(EXCLUDE_LIBS)
-
-find_package(PythonLibs)
-if(NOT PythonLibs_FOUND)
-    list(APPEND EXCLUDE_LIBS python)
-endif()
 
 find_package(PythonLibs)
 if(NOT PythonLibs_FOUND)
