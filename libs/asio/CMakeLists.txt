@@ -22,8 +22,7 @@ find_package(boost_throw_exception)
 
 bcm_setup_version(VERSION 1.64.0)
 
-add_library(boost_asio INTERFACE
-)
+add_library(boost_asio INTERFACE)
 set_property(TARGET boost_asio PROPERTY EXPORT_NAME asio)
 
 target_link_libraries(boost_asio INTERFACE boost::date_time)
@@ -48,9 +47,6 @@ find_package(OpenSSL)
 if(OpenSSL_FOUND)
 target_link_libraries(boost_asio INTERFACE OpenSSL::SSL)
 endif()
-
-
-
 
 bcm_deploy(TARGETS boost_asio INCLUDE include NAMESPACE boost::)
 

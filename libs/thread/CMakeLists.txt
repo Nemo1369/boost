@@ -95,7 +95,6 @@ target_sources(boost_thread PRIVATE
 )
 endif()
 
-
 target_include_directories(boost_thread PRIVATE include)
 
 bcm_deploy(TARGETS boost_thread INCLUDE include NAMESPACE boost::)
