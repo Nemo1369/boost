@@ -120,24 +120,6 @@ else()
     set(asm_format "gas.S")
 endif()
 
-<<<<<<< Updated upstream
-target_compile_definitions(boost_context PRIVATE BOOST_CONTEXT_SOURCE)
-if (CMAKE_BUILD_SHARED) 
-  target_compile_definitions(boost_context PRIVATE BOOST_CONTEXT_EXPORT=EXPORT)
-else()
-target_compile_definitions(boost_context PRIVATE BOOST_CONTEXT_EXPORT)
-endif()
-
-
-=======
-<<<<<<< Updated upstream
->>>>>>> Stashed changes
-target_sources(boost_context PRIVATE 
-  src/asm/make_${BOOST_CONTEXT_ARCHITECTURE}_${BOOST_CONTEXT_ABI}_${BOOST_CONTEXT_BINARY_FORMAT}_${asm_format}
-  src/asm/jump_${BOOST_CONTEXT_ARCHITECTURE}_${BOOST_CONTEXT_ABI}_${BOOST_CONTEXT_BINARY_FORMAT}_${asm_format}
-  src/asm/ontop_${BOOST_CONTEXT_ARCHITECTURE}_${BOOST_CONTEXT_ABI}_${BOOST_CONTEXT_BINARY_FORMAT}_${asm_format}
-)
-=======
 target_compile_definitions(boost_context PRIVATE BOOST_CONTEXT_SOURCE)
 if(CMAKE_BUILD_SHARED)
     target_compile_definitions(boost_context PRIVATE BOOST_CONTEXT_EXPORT=EXPORT)
@@ -151,7 +133,6 @@ target_sources(boost_context PRIVATE
                src/asm/jump_${BOOST_CONTEXT_ARCHITECTURE}_${BOOST_CONTEXT_ABI}_${BOOST_CONTEXT_BINARY_FORMAT}_${asm_format}
                src/asm/ontop_${BOOST_CONTEXT_ARCHITECTURE}_${BOOST_CONTEXT_ABI}_${BOOST_CONTEXT_BINARY_FORMAT}_${asm_format}
                )
->>>>>>> Stashed changes
 
 if(WIN32)
     target_sources(boost_context PRIVATE src/windows/stack_traits.cpp)
